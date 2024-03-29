@@ -5,7 +5,7 @@ import todoReducer from "../features/todo/todoSlice";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage, //================================default storage to local storage===================================
 };
 
 const persistedReducer = persistReducer(persistConfig, todoReducer);

@@ -19,6 +19,7 @@ const AddTodo = () => {
         onSubmit={addTodoHandler}
         className="flex items-center justify-center mt-4"
       >
+        {/* =====================================input field=================================== */}
         <input
           type="text"
           placeholder="Enter todo"
@@ -26,6 +27,8 @@ const AddTodo = () => {
           onChange={(e) => setInput(e.target.value)}
           className="border border-gray-300 rounded py-2 px-4 mr-2 focus:outline-none focus:border-blue-500"
         />
+
+        {/* ================================Add Button======================================= */}
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline"

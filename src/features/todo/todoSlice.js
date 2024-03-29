@@ -4,29 +4,30 @@ const initialState = {
   todos: [],
 };
 
-// step 1 make slice
 export const todoSlice = createSlice({
   name: "todo",
-  initialState,//initialstate declared above
-
-  // property and function inside reducers
+  initialState,
   reducers: {
-    
     addTodo: (state, action) => {
       const todo = {
         id: nanoid(),
         text: action.payload,
+        completed: false, // Add
       };
       state.todos.push(todo);
     },
     removeTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload); //remove
+    },
+    toggleTodo: (state, action) => {
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+      if (todo) {
+        todo.completed = !todo.completed; // Toggle
+      }
     },
   },
 });
 
-//step 2 to export slice
-export const { addTodo, removeTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, toggleTodo } = todoSlice.actions;
 
-// step 3 store need awareness of every reducer bcz it's a restrictive store only can be updated by registered Reducers
 export default todoSlice.reducer;
