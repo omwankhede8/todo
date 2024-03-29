@@ -1,7 +1,5 @@
-// src/store/index.js
-
 import { configureStore } from "@reduxjs/toolkit";
-import { persistReducer } from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import todoReducer from "../features/todo/todoSlice";
 
@@ -15,3 +13,5 @@ const persistedReducer = persistReducer(persistConfig, todoReducer);
 export const store = configureStore({
   reducer: persistedReducer,
 });
+
+export const persistor = persistStore(store);
